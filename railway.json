@@ -1,6 +1,3 @@
-{
-  "services": [
-    {
       "name": "n8n-core",
       "rootDirectory": "services/n8n",
       "startCommand": "n8n start",
