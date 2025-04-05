@@ -9,14 +9,14 @@
         "N8N_BASIC_AUTH_USER": "admin@zebraindustries.net",
         "N8N_BASIC_AUTH_PASSWORD": "CynJim2030##",
         "N8N_PORT": "5678",
-        "N8N_ENCRYPTION_KEY": "your-key",
+        "N8N_ENCRYPTION_KEY": -RNivsb*FG0PxR_k6wGM5OYtEc*LQ9Ju,
         "N8N_LISTEN_ADDRESS": "::",
         "DB_TYPE": "postgresdb",
         "DB_POSTGRESDB_HOST": "postgres.railway.internal",
         "DB_POSTGRESDB_PORT": "5432",
         "DB_POSTGRESDB_DATABASE": "railway",
         "DB_POSTGRESDB_USER": "postgres",
-        "DB_POSTGRESDB_PASSWORD": "your-password"
+        "DB_POSTGRESDB_PASSWORD": v5_S6_tKA4lYbreiT-4e7ue1cg9*WCkY
       }
     },
     {
@@ -24,10 +24,10 @@
       "rootDirectory": "services/worker",
       "startCommand": "n8n worker",
       "env": {
-        "N8N_ENCRYPTION_KEY": "your-key",
+        "N8N_ENCRYPTION_KEY": -RNivsb*FG0PxR_k6wGM5OYtEc*LQ9Ju,
         "QUEUE_BULL_REDIS_HOST": "redis.railway.internal",
         "QUEUE_BULL_REDIS_PORT": "6379",
-        "QUEUE_BULL_REDIS_PASSWORD": "your-password",
+        "QUEUE_BULL_REDIS_PASSWORD": v5_S6_tKA4lYbreiT-4e7ue1cg9*WCkY,
         "EXECUTIONS_MODE": "queue"
       }
     },
