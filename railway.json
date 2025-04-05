@@ -1,21 +1,45 @@
-      "name": "n8n-core",
+{
+  "services": [
+    {
+      "name": "n8n-main",
       "rootDirectory": "services/n8n",
       "startCommand": "n8n start",
       "env": {
         "N8N_BASIC_AUTH_ACTIVE": "true",
         "N8N_BASIC_AUTH_USER": "admin@zebraindustries.net",
         "N8N_BASIC_AUTH_PASSWORD": "CynJim2030##",
-        "N8N_HOST": "0.0.0.0",
-        "N8N_PORT": "5678"
+        "N8N_PORT": "5678",
+        "N8N_ENCRYPTION_KEY": "your-key",
+        "N8N_LISTEN_ADDRESS": "::",
+        "DB_TYPE": "postgresdb",
+        "DB_POSTGRESDB_HOST": "postgres.railway.internal",
+        "DB_POSTGRESDB_PORT": "5432",
+        "DB_POSTGRESDB_DATABASE": "railway",
+        "DB_POSTGRESDB_USER": "postgres",
+        "DB_POSTGRESDB_PASSWORD": "your-password"
       }
     },
     {
-      "name": "crewai-backend",
-      "rootDirectory": "backend",
-      "startCommand": "uvicorn main:app --host=0.0.0.0 --port=8000",
+      "name": "crewai-worker",
+      "rootDirectory": "services/worker",
+      "startCommand": "n8n worker",
       "env": {
-        "OPENAI_API_KEY": "your-openai-key-here"
+        "N8N_ENCRYPTION_KEY": "your-key",
+        "QUEUE_BULL_REDIS_HOST": "redis.railway.internal",
+        "QUEUE_BULL_REDIS_PORT": "6379",
+        "QUEUE_BULL_REDIS_PASSWORD": "your-password",
+        "EXECUTIONS_MODE": "queue"
       }
+    },
+    {
+      "name": "postgres",
+      "startCommand": "",
+      "env": {}
+    },
+    {
+      "name": "redis",
+      "startCommand": "",
+      "env": {}
     }
   ]
 }
