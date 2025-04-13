@@ -1,0 +1,83 @@
+{
+  "name": "ZebraOps Shopify AI Handler",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "zebraops-shopify",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "1",
+      "name": "Shopify Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "prompt": "You are ZebraOps AI Assistant. A new Shopify product was created or updated. Summarize it and generate a short description for internal notes.\n\nProduct Title: {{$json[\"title\"]}}\nProduct Description: {{$json[\"body_html\"]}}"
+      },
+      "id": "2",
+      "name": "Summarize with GPT-4",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [
+        500,
+        300
+      ],
+      "credentials": {
+        "openAIApi": {
+          "id": "1",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "you@example.com",
+        "subject": "\ud83e\udde0 New Shopify Product Processed by ZebraOps AI",
+        "text": "Summary: {{$json[\"choices\"][0][\"text\"]}}"
+      },
+      "id": "3",
+      "name": "Email AI Summary",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        750,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Shopify Webhook": {
+      "main": [
+        [
+          {
+            "node": "Summarize with GPT-4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize with GPT-4": {
+      "main": [
+        [
+          {
+            "node": "Email AI Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "id": "zebraops-shopify-ai"
+}

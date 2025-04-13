@@ -1,0 +1,15 @@
+node_modules
+.git
+.gitignore
+.vscode
+*.log
+*.sh
+*.py
+crewai_trigger
+backend
+snippets
+sections
+layout
+README.md
+*.bak
+*.swp

@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "zebraops-pwa/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "zebraops-pwa/dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "zebraops-pwa/dist/index.html"
+    }
+  ],
+  "buildCommand": "cd zebraops-pwa && npm install && npm run build"
+}
